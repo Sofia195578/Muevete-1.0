@@ -51,29 +51,6 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
 
-@media (max-width: 768px) {
-  .contexto {
-    padding: 0 1rem;
-    font-size: 1rem;
-    text-align: justify;
-  }
-}
-
-@media (max-width: 480px) {
-  .contexto {
-    font-size: 0.95rem;
-    padding: 0 0.8rem;
-  }
-}
-
-/* Prevenir overflow lateral */
-body, html {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-
-
     
     html,
     body {
@@ -176,9 +153,68 @@ body, html {
         transform: translateY(0);
       }
     }
+
+/* Previene desbordamiento lateral */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Responsividad base */
+.contexto {
+  max-width: 800px;
+  margin: 2rem auto 1rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  padding: 0 1rem; /* Padding lateral para pantallas pequeñas */
+}
+
+/* Ajustes en tablets */
+@media (max-width: 768px) {
+  .contexto {
+    font-size: 1rem;
+  }
+}
+
+/* Ajustes en celulares */
+@media (max-width: 480px) {
+  .contexto {
+    font-size: 0.95rem;
+  }
+
+  .Titulo h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #5d6939;
+}
+
+.Botones .btn {
+    margin: 0 1rem 2rem;
+    border-radius: 17px;
+    padding: 0.60rem 4rem;
+    font-size: 1.1rem;
+    background-color: #5d6939;
+    color: white;
+    border: 2px solid #5d6939;
+    transition: all 0.3s ease;
+}
+
+
+}
+
+
   </style>
 </body>
 
 
   
 </html>
+
