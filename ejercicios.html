@@ -22,25 +22,25 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const ejerciciosDisponibles = [
-        { nombre: "💆‍♀️ Estiramiento de brazos hacia arriba (10s)", imagen: "https://co.pinterest.com/pin/473018767132835715/" },
-        { nombre: "🧘‍♀️ Respiración consciente (3 ciclos)", imagen: "https://sdmntprwestus2.oaiusercontent.com/files/00000000-b4f0-61f8-b90f-19b8976a1e5f/raw?se=2025-07-10T14%3A20%3A39Z&sp=r&sv=2024-08-04&sr=b&scid=f72d4074-b212-5ac9-a486-8d910c2e6a64&skoid=5c72dd08-68ae-4091-b4e1-40ccec0693ae&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-09T19%3A50%3A00Z&ske=2025-07-10T19%3A50%3A00Z&sks=b&skv=2024-08-04&sig=MlMwPcvJNSu3gUxnJfpfuaSHeQ1MQI1WnjpUC7tB0lQ%3D" },
-        { nombre: "🪶‍♂️ Caminar alrededor del lugar", imagen: "https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-e7f8-622f-bd64-37de7d66cf42/raw?se=2025-07-10T14%3A21%3A05Z&sp=r&sv=2024-08-04&sr=b&scid=25c5afaa-70a1-546b-a31f-5070e8b3acf0&skoid=5c72dd08-68ae-4091-b4e1-40ccec0693ae&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-09T19%3A50%3A03Z&ske=2025-07-10T19%3A50%3A03Z&sks=b&skv=2024-08-04&sig=klk4Q8QYHCwGfk/nWWIfzP4P2ca7FYGk%2B0JPPmRt3y4%3D" },
-        { nombre: "🤸‍♀️ Rotación de cuello lenta", imagen: "https://sdmntprukwest.oaiusercontent.com/files/00000000-fc00-6243-924b-6e307ddf49d2/raw?se=2025-07-10T14%3A21%3A34Z&sp=r&sv=2024-08-04&sr=b&scid=1a9adbe9-4cd5-5c97-8917-43c37a815d9d&skoid=5c72dd08-68ae-4091-b4e1-40ccec0693ae&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-10T11%3A54%3A34Z&ske=2025-07-11T11%3A54%3A34Z&sks=b&skv=2024-08-04&sig=0mCFDOsb7x0mgf1NcC3IphZKqq6IEg31zObCh%2BW4Sd4%3D" },
-        { nombre: "↔️ Estiramiento lateral", imagen: "https://cdn-icons-png.flaticon.com/512/2555/2555574.png" },
-        { nombre: "🌬️ Inhalación y exhalación guiada", imagen: "https://cdn-icons-png.flaticon.com/512/2936/2936886.png" },
-        { nombre: "✋ Estiramiento de muñecas", imagen: "https://cdn-icons-png.flaticon.com/512/3048/3048127.png" },
-        { nombre: "💪 Movimiento de hombros en círculos", imagen: "https://cdn-icons-png.flaticon.com/512/3048/3048058.png" },
-        { nombre: "😌 Cerrar ojos y respirar profundamente", imagen: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png" },
-        { nombre: "🦵 Elevar rodillas alternadas sentado", imagen: "https://cdn-icons-png.flaticon.com/512/2936/2936776.png" },
-        { nombre: "🧾 Sacudir piernas y brazos por 15s", imagen: "https://cdn-icons-png.flaticon.com/512/863/863810.png" },
+        { nombre: "💆‍♀️ Estiramiento de brazos hacia arriba", imagen: "./img/1.jpg"},
+        { nombre: "🧘‍♀️ Respiración consciente (3 ciclos)", imagen: "./img/2.jpg" },
+        { nombre: "🪶‍♂️ Caminar alrededor del lugar", imagen: "./img/3.jpg" },
+        { nombre: "🤸‍♀️ Rotación de cuello lenta", imagen: "./img/4.jpg" },
+        { nombre: "↔️ Estiramiento lateral", imagen: "./img/5.jpg" },
+        { nombre: "🌬️ Inhalación y exhalación guiada", imagen: "./img/2.jpg" },
+        { nombre: "✋ Estiramiento de muñecas", imagen: "./img/7.jpg" },
+        { nombre: "💪 Movimiento de hombros en círculos", imagen: "./img/8.jpg" },
+        { nombre: "😌 Cerrar ojos y respirar profundamente", imagen: "./img/2.jpg" },
+        { nombre: "🦵 Elevar rodillas alternadas sentado", imagen: "./img/10.jpg" },
+        { nombre: "🧾 Sacudir piernas y brazos", imagen: "https://cdn-icons-png.flaticon.com/512/863/863810.png" },
         { nombre: "😇 Estiramiento de espalda baja", imagen: "https://cdn-icons-png.flaticon.com/512/863/863836.png" },
         { nombre: "👣 Paseo corto o marcha en el lugar", imagen: "https://cdn-icons-png.flaticon.com/512/3408/3408545.png" },
         { nombre: "💆‍♀️ Masaje suave en cuello y hombros", imagen: "https://cdn-icons-png.flaticon.com/512/4052/4052846.png" },
         { nombre: "💧 Beber un vaso de agua", imagen: "https://cdn-icons-png.flaticon.com/512/3045/3045886.png" },
-        { nombre: "🌤️ Mirar por la ventana durante 1 minuto", imagen: "https://cdn-icons-png.flaticon.com/512/1146/1146869.png" },
+        { nombre: "🌤️ Mirar por la ventana durante", imagen: "https://cdn-icons-png.flaticon.com/512/1146/1146869.png" },
         { nombre: "🦶 Hacer círculos con los tobillos", imagen: "https://cdn-icons-png.flaticon.com/512/3048/3048127.png" },
         { nombre: "🐈 Estirarse como gato (espalda arqueada)", imagen: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
-        { nombre: "✍️ Dibujar o escribir algo por 2 minutos", imagen: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png" },
+        { nombre: "✍️ Dibujar o escribir algo", imagen: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png" },
         { nombre: "🎵🌳️ Escuchar sonidos de la naturaleza", imagen: "https://cdn-icons-png.flaticon.com/512/3659/3659898.png" }
       ];
 
