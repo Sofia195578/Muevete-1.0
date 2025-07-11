@@ -197,6 +197,36 @@
       font-weight: bold;
     }
   </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  document.getElementById("registroForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const user = {
+      nombre: document.getElementById("fullname").value,
+      identificacion: document.getElementById("identification").value,
+      telefono: document.getElementById("phone").value,
+      nacimiento: document.getElementById("fechanacimiento").value,
+      area: document.getElementById("areadetrabajo").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value
+    };
+
+    localStorage.setItem("usuario", JSON.stringify(user));
+
+    // SweetAlert2 mensaje de éxito
+    Swal.fire({
+      icon: 'success',
+      title: '¡Registro exitoso!',
+      text: 'Serás redirigido al inicio de sesión.',
+      confirmButtonColor: '#5d6939'
+    }).then(() => {
+      window.location.href = "login.html";
+    });
+  });
+</script>
 </body>
 
 </html>
