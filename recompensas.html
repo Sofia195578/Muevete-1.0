@@ -6,6 +6,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recompensas Salud en el Trabajo</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <a href="./inicio (1).html" class="btn-salida" title="Volver a inicio">✖</a>
+
+    <section class="seccion-recompensas">
+        <h2 class="titulo-seccion">✨ ¡Gana Recompensas por Cuidarte!</h2>
+        <p class="subtitulo">Suma puntos al hacer ejercicios y canjéalos por premios increíbles, ¡individuales y en
+            equipo!</p>
+
+        <div class="contenedor-recompensas">
+
+            <!-- Recompensas individuales -->
+            <div class="bloque">
+                <h3 class="titulo-bloque">🎯 Recompensas Individuales</h3>
+                <div class="recompensas">
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="botella deportiva" />
+                        <h4>200 puntos</h4>
+                        <p>Botella Deportiva</p>
+                    </div>
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="día libre" />
+                        <h4>500 puntos</h4>
+                        <p>Día Libre</p>
+                    </div>
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="bono en la prima" />
+                        <h4>1000 puntos</h4>
+                        <p>bono en la prima</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recompensas grupales -->
+            <div class="bloque">
+                <h3 class="titulo-bloque">🤝 Recompensas Grupales</h3>
+                <div class="recompensas">
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="almuerzo en grupo" />
+                        <h4>3000 pts equipo</h4>
+                        <p>Almuerzo en grupo</p>
+                    </div>
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="premio sorpresa" />
+                        <h4>6000 pts equipo</h4>
+                        <p>¡Premio Sorpresa!</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bloque">
+                <h3 class="titulo-bloque">📈 Tus Progresos</h3>
+                <div class="progreso-individual">
+                    <h3> 🙋‍♂️ Personal</h3>
+                    <div class="puntos-info">
+                        <span><strong>Tienes:</strong> <span id="puntos-actuales">0</span> pts</span>
+                        <span><strong>Meta:</strong> <span id="meta-puntos">1000</span> pts</span>
+                    </div>
+                    <div class="barra-progreso">
+                        <div id="barra-individual"></div>
+                    </div>
+                    <div class="porcentaje" id="porcentaje-progreso">0%</div>
+                </div>
+                <!-- Progreso grupal -->
+                <div class="progreso-individual" style="margin-top: 40px;">
+                    <h3>🧑‍🤝‍🧑 Grupal</h3>
+                    <div class="puntos-info">
+                        <span><strong>Equipo:</strong> <span id="puntos-grupo">0</span> pts</span>
+                        <span><strong>Meta:</strong> <span id="meta-grupo">6000</span> pts</span>
+                    </div>
+                    <div class="barra-progreso">
+                        <div id="barra-grupo"></div>
+                    </div>
+                    <div class="porcentaje" id="porcentaje-grupo">0%</div>
+                </div>
+            </div>
+
+            <!-- Ranking grupal -->
+            <div class="bloque">
+                <h3 class="titulo-bloque">🏅 Top 3 Colaboradores con más puntos</h3>
+                <ol id="ranking-personas">
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Función de confeti
+        function lanzarConfeti() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Puntos simulados
+        const puntosUsuario = 1000;
+        const maxPuntosIndividual = 1000;
+
+        // Mostrar texto
+        document.getElementById('puntos-actuales').textContent = puntosUsuario;
+        document.getElementById('meta-puntos').textContent = maxPuntosIndividual;
+
+        // Calcular porcentaje
+        const porcentaje = Math.min((puntosUsuario / maxPuntosIndividual) * 100, 100);
+        document.getElementById('barra-individual').style.width = porcentaje + "%";
+        document.getElementById('porcentaje-progreso').textContent = `${Math.round(porcentaje)}%`;
+
+        // Lanzar confeti si alcanza meta individual
+        if (puntosUsuario >= maxPuntosIndividual) {
+            lanzarConfeti();
+        }
+
+        // Ranking de personas
+        const personas = [
+            { nombre: "Laura Rodríguez", puntos: 900 },
+            { nombre: "Carlos Gómez", puntos: 1020 },
+            { nombre: "Diana Pérez", puntos: 870 },
+            { nombre: "Juan Torres", puntos: 800 },
+            { nombre: "Ana Ruiz", puntos: 950 }
+        ];
+
+        const topPersonas = personas.sort((a, b) => b.puntos - a.puntos).slice(0, 3);
+        const ranking = document.getElementById('ranking-personas');
+
+        topPersonas.forEach((persona, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `#${index + 1} - <strong>${persona.nombre}</strong>: ${persona.puntos} pts`;
+            ranking.appendChild(li);
+        });
+
+        // Progreso grupal simulado
+        const puntosEquipo = 3000;
+        const metaGrupo = 6000;
+
+        document.getElementById('puntos-grupo').textContent = puntosEquipo;
+        document.getElementById('meta-grupo').textContent = metaGrupo;
+
+        const porcentajeGrupo = Math.min((puntosEquipo / metaGrupo) * 100, 100);
+        document.getElementById('barra-grupo').style.width = porcentajeGrupo + "%";
+        document.getElementById('porcentaje-grupo').textContent = `${Math.round(porcentajeGrupo)}%`;
+
+        // Confeti si se alcanza meta grupal
+        if (puntosEquipo >= metaGrupo) {
+            setTimeout(lanzarConfeti, 500);
+        }
+    </script>
+
     <style>
         @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
 
@@ -327,158 +480,6 @@
             }
         }
     </style>
-</head>
-
-<body>
-
-    <a href="./inicio (1).html" class="btn-salida" title="Volver a inicio">✖</a>
-
-    <section class="seccion-recompensas">
-        <h2 class="titulo-seccion">✨ ¡Gana Recompensas por Cuidarte!</h2>
-        <p class="subtitulo">Suma puntos al hacer ejercicios y canjéalos por premios increíbles, ¡individuales y en
-            equipo!</p>
-
-        <div class="contenedor-recompensas">
-
-            <!-- Recompensas individuales -->
-            <div class="bloque">
-                <h3 class="titulo-bloque">🎯 Recompensas Individuales</h3>
-                <div class="recompensas">
-                    <div class="card-recompensa">
-                        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="botella deportiva" />
-                        <h4>200 puntos</h4>
-                        <p>Botella Deportiva</p>
-                    </div>
-                    <div class="card-recompensa">
-                        <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="día libre" />
-                        <h4>500 puntos</h4>
-                        <p>Día Libre</p>
-                    </div>
-                    <div class="card-recompensa">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="bono en la prima" />
-                        <h4>1000 puntos</h4>
-                        <p>bono en la prima</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recompensas grupales -->
-            <div class="bloque">
-                <h3 class="titulo-bloque">🤝 Recompensas Grupales</h3>
-                <div class="recompensas">
-                    <div class="card-recompensa">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="almuerzo en grupo" />
-                        <h4>3000 pts equipo</h4>
-                        <p>Almuerzo en grupo</p>
-                    </div>
-                    <div class="card-recompensa">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="premio sorpresa" />
-                        <h4>6000 pts equipo</h4>
-                        <p>¡Premio Sorpresa!</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="bloque">
-                <h3 class="titulo-bloque">📈 Tus Progresos</h3>
-                <div class="progreso-individual">
-                    <h3> 🙋‍♂️ Personal</h3>
-                    <div class="puntos-info">
-                        <span><strong>Tienes:</strong> <span id="puntos-actuales">0</span> pts</span>
-                        <span><strong>Meta:</strong> <span id="meta-puntos">1000</span> pts</span>
-                    </div>
-                    <div class="barra-progreso">
-                        <div id="barra-individual"></div>
-                    </div>
-                    <div class="porcentaje" id="porcentaje-progreso">0%</div>
-                </div>
-                <!-- Progreso grupal -->
-                <div class="progreso-individual" style="margin-top: 40px;">
-                    <h3>🧑‍🤝‍🧑 Grupal</h3>
-                    <div class="puntos-info">
-                        <span><strong>Equipo:</strong> <span id="puntos-grupo">0</span> pts</span>
-                        <span><strong>Meta:</strong> <span id="meta-grupo">6000</span> pts</span>
-                    </div>
-                    <div class="barra-progreso">
-                        <div id="barra-grupo"></div>
-                    </div>
-                    <div class="porcentaje" id="porcentaje-grupo">0%</div>
-                </div>
-            </div>
-
-            <!-- Ranking grupal -->
-            <div class="bloque">
-                <h3 class="titulo-bloque">🏅 Top 3 Colaboradores con más puntos</h3>
-                <ol id="ranking-personas">
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script>
-        // Función de confeti
-        function lanzarConfeti() {
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
-        }
-
-        // Puntos simulados
-        const puntosUsuario = 1000;
-        const maxPuntosIndividual = 1000;
-
-        // Mostrar texto
-        document.getElementById('puntos-actuales').textContent = puntosUsuario;
-        document.getElementById('meta-puntos').textContent = maxPuntosIndividual;
-
-        // Calcular porcentaje
-        const porcentaje = Math.min((puntosUsuario / maxPuntosIndividual) * 100, 100);
-        document.getElementById('barra-individual').style.width = porcentaje + "%";
-        document.getElementById('porcentaje-progreso').textContent = `${Math.round(porcentaje)}%`;
-
-        // Lanzar confeti si alcanza meta individual
-        if (puntosUsuario >= maxPuntosIndividual) {
-            lanzarConfeti();
-        }
-
-        // Ranking de personas
-        const personas = [
-            { nombre: "Laura Rodríguez", puntos: 900 },
-            { nombre: "Carlos Gómez", puntos: 1020 },
-            { nombre: "Diana Pérez", puntos: 870 },
-            { nombre: "Juan Torres", puntos: 800 },
-            { nombre: "Ana Ruiz", puntos: 950 }
-        ];
-
-        const topPersonas = personas.sort((a, b) => b.puntos - a.puntos).slice(0, 3);
-        const ranking = document.getElementById('ranking-personas');
-
-        topPersonas.forEach((persona, index) => {
-            const li = document.createElement('li');
-            li.innerHTML = `#${index + 1} - <strong>${persona.nombre}</strong>: ${persona.puntos} pts`;
-            ranking.appendChild(li);
-        });
-
-        // Progreso grupal simulado
-        const puntosEquipo = 3000;
-        const metaGrupo = 6000;
-
-        document.getElementById('puntos-grupo').textContent = puntosEquipo;
-        document.getElementById('meta-grupo').textContent = metaGrupo;
-
-        const porcentajeGrupo = Math.min((puntosEquipo / metaGrupo) * 100, 100);
-        document.getElementById('barra-grupo').style.width = porcentajeGrupo + "%";
-        document.getElementById('porcentaje-grupo').textContent = `${Math.round(porcentajeGrupo)}%`;
-
-        // Confeti si se alcanza meta grupal
-        if (puntosEquipo >= metaGrupo) {
-            setTimeout(lanzarConfeti, 500);
-        }
-    </script>
 </body>
 
 </html>
