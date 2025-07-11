@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Muévete+</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Muévete+</div>
+            <div class="tagline">Reconecta contigo desde la acción suave, amorosa y diaria</div>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-pic-container">
+                <div class="profile-pic" id="profilePic" onclick="toggleEditOptions()">
+                    <div class="default-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                </div>
+                <div class="edit-options" id="editOptions">
+                    <button onclick="document.getElementById('fileInput').click()">Cambiar</button>
+                    <button onclick="removePhoto()">Eliminar</button>
+                </div>
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+
+            <div class="username" id="username" onclick="editField('username')">Ana Martínez</div>
+            <input type="text" class="edit-input" id="usernameInput" onblur="saveField('username')"
+                value="Ana Martínez">
+
+            <div class="work-area" id="workArea" onclick="editField('workArea')">Desarrollo Web</div>
+            <input type="text" class="edit-input" id="workAreaInput" onblur="saveField('workArea')"
+                value="Desarrollo Web">
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">128</div>
+                    <div class="stat-label">Amigos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">87</div>
+                    <div class="stat-label">Días activos</div>
+                </div>
+            </div>
+
+            <div class="streak-calendar">
+                <div class="calendar-header">
+                    <div class="calendar-month">Julio 2023</div>
+                    <div class="streak-value">Racha: 15 días</div>
+                </div>
+
+                <div class="calendar-grid">
+                    <div class="calendar-day day-header">L</div>
+                    <div class="calendar-day day-header">M</div>
+                    <div class="calendar-day day-header">X</div>
+                    <div class="calendar-day day-header">J</div>
+                    <div class="calendar-day day-header">V</div>
+                    <div class="calendar-day day-header">S</div>
+                    <div class="calendar-day day-header">D</div>
+
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day active-day">4</div>
+                    <div class="calendar-day active-day">5</div>
+                    <div class="calendar-day active-day">6</div>
+                    <div class="calendar-day active-day">7</div>
+                    <div class="calendar-day active-day">8</div>
+                    <div class="calendar-day active-day">9</div>
+                    <div class="calendar-day active-day">10</div>
+                    <div class="calendar-day active-day">11</div>
+                    <div class="calendar-day active-day">12</div>
+                    <div class="calendar-day active-day">13</div>
+                    <div class="calendar-day active-day">14</div>
+                    <div class="calendar-day active-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">31</div>
+                </div>
+
+                <div class="streak-info">
+                    ¡Sigue así! Tu racha actual es de <span class="streak-value">15 días</span>.
+                </div>
+            </div>
+
+            <div class="nav-links">
+                <a href="./inicio (1).html" class="nav-link nav-link-home">Inicio</a>
+                <a href="./login.html" class="nav-link nav-link-logout">Salir</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar opciones de edición de foto
+        function toggleEditOptions() {
+            const options = document.getElementById('editOptions');
+            options.style.display = options.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Función para eliminar foto de perfil
+        function removePhoto() {
+            const profilePic = document.getElementById('profilePic');
+            profilePic.innerHTML = '<div class="default-icon"><i class="fas fa-leaf"></i></div>';
+            profilePic.style.background = '#e8f5e9';
+            profilePic.style.color = '#6b8e23';
+            document.getElementById('editOptions').style.display = 'none';
+        }
+
+        // Función para cambiar foto de perfil
+        document.getElementById('fileInput').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const profilePic = document.getElementById('profilePic');
+                    profilePic.innerHTML = '';
+                    profilePic.style.background = 'none';
+                    profilePic.style.color = 'inherit';
+                    profilePic.style.backgroundImage = `url(${event.target.result})`;
+                    profilePic.style.backgroundSize = 'cover';
+                    profilePic.style.backgroundPosition = 'center';
+                    document.getElementById('editOptions').style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Cerrar opciones de edición al hacer clic fuera
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.profile-pic-container')) {
+                document.getElementById('editOptions').style.display = 'none';
+            }
+        });
+
+        // Funciones para editar nombre y área de trabajo
+        function editField(field) {
+            const displayElement = document.getElementById(field);
+            const inputElement = document.getElementById(field + 'Input');
+
+            displayElement.style.display = 'none';
+            inputElement.style.display = 'block';
+            inputElement.focus();
+            inputElement.select();
+        }
+
+        function saveField(field) {
+            const displayElement = document.getElementById(field);
+            const inputElement = document.getElementById(field + 'Input');
+
+            displayElement.textContent = inputElement.value;
+            displayElement.style.display = 'block';
+            inputElement.style.display = 'none';
+        }
+
+        // Guardar cambios al presionar Enter
+        document.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const activeInput = document.querySelector('.edit-input[style="display: block;"]');
+                if (activeInput) {
+                    activeInput.blur();
+                }
+            }
+        });
+    </script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+        body {
+            font-family: "MuseoModerno", sans-serif;
+            background-color: #dbdbd3;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6b8e23;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #8f9779;
+            margin-bottom: 20px;
+        }
+
+        .profile-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-pic-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d8e2dc;
+            cursor: pointer;
+            background-color: #e8f5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b8e23;
+            font-size: 60px;
+        }
+
+        .edit-options {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+            display: none;
+        }
+
+        .edit-options button {
+            border: none;
+            background: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 15px;
+        }
+
+        .edit-options button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .edit-options button:first-child {
+            color: #6b8e23;
+        }
+
+        .edit-options button:last-child {
+            color: #e74c3c;
+        }
+
+        .username {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #6b8e23;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .username:hover {
+            background-color: #f0f0f0;
+        }
+
+        .work-area {
+            color: #8f9779;
+            margin-bottom: 20px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .work-area:hover {
+            background-color: #f0f0f0;
+        }
+
+        .edit-input {
+            border: 1px solid #d8e2dc;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-family: "MuseoModerno", sans-serif;
+            font-size: inherit;
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6b8e23;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #8f9779;
+        }
+
+        .streak-calendar {
+            background-color: #fff9f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .calendar-month {
+            font-weight: bold;
+            color: #e67e22;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .day-header {
+            font-weight: bold;
+            color: #8f9779;
+            background: none !important;
+        }
+
+        .active-day {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        .streak-info {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .streak-value {
+            color: #e67e22;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-link {
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-link-home {
+            background-color: #d8e2dc;
+            color: #4a7c59;
+        }
+
+        .nav-link-logout {
+            background-color: #f0e6dd;
+            color: #8f7e6f;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .default-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</body>
+
+</html>

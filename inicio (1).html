@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muevete Principal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="menu">
+      <div class="menu-links">
+        <a href="#ejercicios">Ejercicios</a>
+        <a href="#testimonios">Reseñas</a>
+        <a href="#faq">FAQ</a>
+
+
+      </div>
+
+      <div class="profile-section">
+        <a href="./Perfil.html" class="profile-icon" id="profileIcon">
+          <i class="fas fa-user-circle"></i>
+        </a>
+        <button class="logout-btn" data-bs-toggle="modal" data-bs-target="#logoutModal">
+          Salir
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Confirmar salida</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que deseas salir de tu cuenta?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="confirmLogout">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>¿Estás preparado?</h2>
+      <p>Explora ejercicios que puedes realizar en minutos para mejorar tu salud física y mental. Recarga tu energía y
+        aumenta tu productividad con nuestras rutinas diseñadas por expertos.</p>
+      <button><a href="./pausas.html">Comenzar ahora</a></button>
+    </div>
+  </section>
+
+  <section class="container" id="ejercicios">
+    <h3 class="section-title">Ejercicios principales</h3>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card card-dark">
+          <img
+            src="https://static.grupojoly.com/clip/246b8173-4ca0-440e-a2b8-ba1df0224d02_source-aspect-ratio_1600w_0.jpg"
+            alt="Estiramiento de cuello">
+          <div class="card-body">
+            <h5 class="card-title">Estiramiento de cuello</h5>
+            <p class="card-text">Reduce la tensión con movimientos suaves en la zona cervical. Ideal para después de
+              largas horas frente al computador.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card card-dark">
+          <img
+            src="https://s3assets.skimble.com/assets/4469/skimble-workout-trainer-exercise-seated-spinal-twists-1_iphone.jpg"
+            alt="Giros de torso">
+          <div class="card-body">
+            <h5 class="card-title">Giros de torso</h5>
+            <p class="card-text">Activa tu espalda y zona media con movimientos circulares. Mejora la flexibilidad y
+              alivia dolores lumbares.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card card-dark">
+          <img src="https://centrointegraldepsicologia.com/wp-content/uploads/2023/06/respiracion-consciente.png"
+            alt="Respiración consciente">
+          <div class="card-body">
+            <h5 class="card-title">Respiración consciente</h5>
+            <p class="card-text">Inhala y exhala profundamente durante 3 minutos. Reduce el estrés y mejora la
+              concentración al instante.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card card-dark">
+          <img
+            src="https://img.freepik.com/foto-gratis/mujer-tiro-completo-caminando-carretera_23-2148848959.jpg?semt=ais_hybrid&w=740"
+            alt="Pausa caminando">
+          <div class="card-body">
+            <h5 class="card-title">Pausa caminando</h5>
+            <p class="card-text">Camina en tu espacio por al menos 5 minutos y recarga energía. Perfecto para reactivar
+              tu circulación sanguínea.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5" id="testimonios">
+    <h3 class="section-title">Lo que dicen nuestros usuarios</h3>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card card-dark h-100">
+          <div class="card-body text-center">
+            <img src="http://segurappoficial.com/wp-content/uploads/2024/01/Da-33-2-original.png"
+              class="rounded-circle mb-3" width="80" alt="Usuario">
+            <p class="card-text">"Los ejercicios de estiramiento han cambiado mi rutina laboral. Ya no tengo dolores de
+              espalda después de trabajar todo el día."</p>
+            <h5 class="card-title text-bg">María G.</h5>
+            <div class="text-warning">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-dark h-100">
+          <div class="card-body text-center">
+            <img src="https://i.pinimg.com/originals/12/65/d5/1265d54adeac4b1871cad835ea6c4d66.jpg"
+              class="rounded-circle mb-3" width="80" alt="Usuario">
+            <p class="card-text">"Las pausas activas me han ayudado a mantener mi energía durante todo el día.
+              ¡Recomiendo totalmente esta plataforma!"</p>
+            <h5 class="card-title text-bg">Carlos R.</h5>
+            <div class="text-warning">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-dark h-100">
+          <div class="card-body text-center">
+            <img src="https://i.pinimg.com/originals/8d/ac/9b/8dac9be7f7ba52a98a6cea7404159d4f.jpg"
+              class="rounded-circle mb-3" width="80" alt="Usuario">
+            <p class="card-text">"Desde que uso estos ejercicios, mi productividad ha aumentado y me siento mucho menos
+              estresada. ¡Gracias Muevete+!"</p>
+            <h5 class="card-title text-bg">Rubiel R.</h5>
+            <div class="text-warning">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-3" id="faq">
+    <h3 class="section-title">Preguntas Frecuentes</h3>
+    <div class="accordion" id="accordionFAQ">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            ¿Cuánto tiempo debo dedicar a estos ejercicios?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+          data-bs-parent="#accordionFAQ">
+          <div class="accordion-body">
+            Recomendamos al menos 5-10 minutos cada 2 horas de trabajo sedentario. Incluso breves pausas de 1-2 minutos
+            pueden marcar una gran diferencia.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            ¿Necesito equipo especial para los ejercicios?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionFAQ">
+          <div class="accordion-body">
+            No, todos nuestros ejercicios están diseñados para realizarse sin equipo especial. Solo necesitas un pequeño
+            espacio y ropa cómoda.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            ¿Puedo hacer estos ejercicios si tengo problemas de salud?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionFAQ">
+          <div class="accordion-body">
+            La mayoría de los ejercicios son suaves y seguros, pero si tienes alguna condición médica específica, te
+            recomendamos consultar con un profesional de la salud antes de comenzar.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Muevete+</p>
+    <p>Desarrollado por Darly H, Karol Y, Karol Z</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('profileIcon').addEventListener('click', function (e) {
+      e.preventDefault();
+      this.classList.toggle('active');
+      setTimeout(() => {
+        window.location.href = 'perfil.html';
+      }, 300);
+    });
+
+    document.getElementById('confirmLogout').addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+  </script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
+
+    body {
+      margin: 0;
+      font-family: "MuseoModerno", sans-serif;
+      background-color: #ffffff;
+      color: #f0f0f0;
+    }
+
+    header {
+      background: transparent;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #bb8256;
+    }
+
+    .menu {
+      background-color: #1e1e1e85;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .menu-links {
+      display: flex;
+    }
+
+    .menu a {
+      color: #ccc;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #bb8256;
+    }
+
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-icon {
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .profile-icon:hover,
+    .profile-icon.active {
+      color: #bb8256;
+      transform: scale(1.1);
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: 1px solid #ccc;
+      color: #ccc;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: "MuseoModerno", sans-serif;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      background: #bb8256;
+      border-color: #bb8256;
+      color: white;
+    }
+
+    .hero {
+      background: url('/img/fondo-inicio.png') center/cover no-repeat;
+      padding: 9rem 2rem;
+      position: relative;
+      text-align: center;
+      color: white;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero button {
+      background-color: #bb8256;
+      border: none;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #a56a42;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin: 4rem 0 2rem;
+      color: #bb8256;
+      font-weight: 700;
+    }
+
+    .card-dark {
+      background-color: #1f1f1f;
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-dark:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-dark img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .card-dark:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-dark .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-dark .card-title {
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .card-dark .card-text {
+      color: #cccccc;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Estilos para la sección de tips */
+    .tips-container {
+      background-color: #1e1e1e;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #333;
+    }
+
+    .tip-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .tip-icon {
+      background-color: #bb8256;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .tip-content h4 {
+      color: #bb8256;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .tip-content p {
+      color: #ccc;
+      margin-bottom: 0;
+    }
+
+    .accordion-button {
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: rgba(187, 130, 86, 0.1);
+      color: #bb8256;
+      box-shadow: none;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: rgba(187, 130, 86, 0.25);
+    }
+
+    .accordion-button::after {
+      background-color: #a56a42;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: rgba(190, 131, 86, 0.568);
+      color: #b1642a;
+      box-shadow: none;
+    }
+
+    .accordion-button:not(.collapsed)::after {
+      background-color: none;
+    }
+
+    .accordion-body {
+      background-color: #1e1e1e;
+      color: #ccc;
+    }
+
+    .accordion-item {
+      border: none;
+      margin-bottom: 15px;
+      border-radius: 12px !important;
+      overflow: hidden;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #1e1e1e;
+      color: #aaa;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+
+    .modal-content {
+      background-color: #1f1f1f;
+      color: #f0f0f0;
+      border-radius: 12px;
+      border: 1px solid #333;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid #333;
+    }
+
+    .modal-title {
+      color: #bb8256;
+    }
+
+    .modal-footer {
+      border-top: 1px solid #333;
+    }
+
+    .btn-secondary {
+      background-color: #333;
+      border-color: #333;
+    }
+
+    .btn-primary {
+      background-color: #bb8256;
+      border-color: #bb8256;
+    }
+
+    .btn-primary:hover {
+      background-color: #a56a42;
+      border-color: #a56a42;
+    }
+
+    .text-bg {
+      color: #bb8256;
+    }
+
+    .text-warning {
+      color: #ffc107;
+    }
+
+    a {
+      color: rgb(255 255 255);
+      text-decoration: none;
+    }
+  </style>
+</body>
+
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recompensas Salud en el Trabajo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f0fff4;
+            color: #2e4d3d;
+        }
+
+        .seccion-recompensas {
+            background: linear-gradient(135deg, #cccba9, #bbc59b);
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .titulo-seccion {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #1e3d2f;
+            font-family: "MuseoModerno", sans-serif;
+            animation: fadeInDown 1s ease;
+        }
+
+        .subtitulo {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #467d64;
+            font-weight: 500;
+        }
+
+        .contenedor-recompensas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bloque {
+            background: #ecf5eb;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 550px;
+            transition: transform 0.3s ease;
+        }
+
+        .bloque:hover {
+            transform: scale(1.02);
+        }
+
+        .titulo-bloque {
+            font-size: 1.8rem;
+            color: #2d623c;
+            margin-bottom: 20px;
+        }
+
+        .recompensas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-recompensa {
+            background: #eafff0;
+            border-radius: 15px;
+            padding: 20px;
+            width: 150px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .card-recompensa:hover {
+            background: #d8f5e2;
+            transform: translateY(-5px);
+        }
+
+        .card-recompensa img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .card-recompensa h4 {
+            font-size: 1.1rem;
+            color: #246a47;
+            margin-bottom: 5px;
+        }
+
+        .card-recompensa p {
+            font-size: 0.95rem;
+            color: #3e5f50;
+        }
+
+        .progreso-individual {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .puntos-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #355c47;
+            padding: 0 10px;
+        }
+
+        .barra-progreso {
+            background: #d2f2db;
+            height: 24px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #barra-individual {
+            height: 100%;
+            background: linear-gradient(to right, #43e97b, #38f9d7);
+            width: 0%;
+            transition: width 1s ease-in-out;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .porcentaje {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #246a47;
+            font-weight: bold;
+        }
+
+        /* Ranking de personas */
+        #ranking-personas {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+
+        #ranking-personas li {
+            background: #eafff0;
+            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #2e5c3d;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        #barra-grupo {
+            height: 100%;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            width: 0%;
+            transition: width 1s ease-in-out;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .btn-salida {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #5d6939;
+            border: 2px solid #5d6939;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 35px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-salida:hover {
+            background-color: #5d6939;
+            color: white;
+        }
+
+        a {
+            color: rgb(255 255 255);
+            text-decoration: none;
+        }
+
+
+        /* Animación de entrada */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .recompensas {
+                justify-content: center;
+            }
+
+            .card-recompensa {
+                width: 100%;
+                max-width: 180px;
+            }
+
+            .puntos-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                padding: 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titulo-seccion {
+                font-size: 2rem;
+            }
+
+            .subtitulo {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .bloque {
+                padding: 20px;
+            }
+
+            .titulo-bloque {
+                font-size: 1.5rem;
+            }
+
+            .card-recompensa {
+                max-width: 160px;
+                padding: 15px;
+            }
+
+            .card-recompensa h4 {
+                font-size: 1rem;
+            }
+
+            .card-recompensa p {
+                font-size: 0.85rem;
+            }
+
+            .barra-progreso {
+                height: 20px;
+            }
+
+            .porcentaje {
+                font-size: 0.85rem;
+            }
+
+            #ranking-personas li {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .titulo-seccion {
+                font-size: 1.8rem;
+            }
+
+            .subtitulo {
+                font-size: 0.95rem;
+            }
+
+            .bloque {
+                padding: 15px;
+            }
+
+            .card-recompensa {
+                max-width: 140px;
+                padding: 12px;
+            }
+
+            .card-recompensa img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .card-recompensa h4 {
+                font-size: 0.95rem;
+            }
+
+            .card-recompensa p {
+                font-size: 0.8rem;
+            }
+
+            .titulo-bloque {
+                font-size: 1.3rem;
+            }
+
+            .barra-progreso {
+                height: 18px;
+            }
+
+            .porcentaje {
+                font-size: 0.8rem;
+            }
+
+            #ranking-personas li {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="./inicio (1).html" class="btn-salida" title="Volver a inicio">✖</a>
+
+    <section class="seccion-recompensas">
+        <h2 class="titulo-seccion">✨ ¡Gana Recompensas por Cuidarte!</h2>
+        <p class="subtitulo">Suma puntos al hacer ejercicios y canjéalos por premios increíbles, ¡individuales y en
+            equipo!</p>
+
+        <div class="contenedor-recompensas">
+
+            <!-- Recompensas individuales -->
+            <div class="bloque">
+                <h3 class="titulo-bloque">🎯 Recompensas Individuales</h3>
+                <div class="recompensas">
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="botella deportiva" />
+                        <h4>200 puntos</h4>
+                        <p>Botella Deportiva</p>
+                    </div>
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="día libre" />
+                        <h4>500 puntos</h4>
+                        <p>Día Libre</p>
+                    </div>
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="bono en la prima" />
+                        <h4>1000 puntos</h4>
+                        <p>bono en la prima</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recompensas grupales -->
+            <div class="bloque">
+                <h3 class="titulo-bloque">🤝 Recompensas Grupales</h3>
+                <div class="recompensas">
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="almuerzo en grupo" />
+                        <h4>3000 pts equipo</h4>
+                        <p>Almuerzo en grupo</p>
+                    </div>
+                    <div class="card-recompensa">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="premio sorpresa" />
+                        <h4>6000 pts equipo</h4>
+                        <p>¡Premio Sorpresa!</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bloque">
+                <h3 class="titulo-bloque">📈 Tus Progresos</h3>
+                <div class="progreso-individual">
+                    <h3> 🙋‍♂️ Personal</h3>
+                    <div class="puntos-info">
+                        <span><strong>Tienes:</strong> <span id="puntos-actuales">0</span> pts</span>
+                        <span><strong>Meta:</strong> <span id="meta-puntos">1000</span> pts</span>
+                    </div>
+                    <div class="barra-progreso">
+                        <div id="barra-individual"></div>
+                    </div>
+                    <div class="porcentaje" id="porcentaje-progreso">0%</div>
+                </div>
+                <!-- Progreso grupal -->
+                <div class="progreso-individual" style="margin-top: 40px;">
+                    <h3>🧑‍🤝‍🧑 Grupal</h3>
+                    <div class="puntos-info">
+                        <span><strong>Equipo:</strong> <span id="puntos-grupo">0</span> pts</span>
+                        <span><strong>Meta:</strong> <span id="meta-grupo">6000</span> pts</span>
+                    </div>
+                    <div class="barra-progreso">
+                        <div id="barra-grupo"></div>
+                    </div>
+                    <div class="porcentaje" id="porcentaje-grupo">0%</div>
+                </div>
+            </div>
+
+            <!-- Ranking grupal -->
+            <div class="bloque">
+                <h3 class="titulo-bloque">🏅 Top 3 Colaboradores con más puntos</h3>
+                <ol id="ranking-personas">
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Función de confeti
+        function lanzarConfeti() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Puntos simulados
+        const puntosUsuario = 1000;
+        const maxPuntosIndividual = 1000;
+
+        // Mostrar texto
+        document.getElementById('puntos-actuales').textContent = puntosUsuario;
+        document.getElementById('meta-puntos').textContent = maxPuntosIndividual;
+
+        // Calcular porcentaje
+        const porcentaje = Math.min((puntosUsuario / maxPuntosIndividual) * 100, 100);
+        document.getElementById('barra-individual').style.width = porcentaje + "%";
+        document.getElementById('porcentaje-progreso').textContent = `${Math.round(porcentaje)}%`;
+
+        // Lanzar confeti si alcanza meta individual
+        if (puntosUsuario >= maxPuntosIndividual) {
+            lanzarConfeti();
+        }
+
+        // Ranking de personas
+        const personas = [
+            { nombre: "Laura Rodríguez", puntos: 900 },
+            { nombre: "Carlos Gómez", puntos: 1020 },
+            { nombre: "Diana Pérez", puntos: 870 },
+            { nombre: "Juan Torres", puntos: 800 },
+            { nombre: "Ana Ruiz", puntos: 950 }
+        ];
+
+        const topPersonas = personas.sort((a, b) => b.puntos - a.puntos).slice(0, 3);
+        const ranking = document.getElementById('ranking-personas');
+
+        topPersonas.forEach((persona, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `#${index + 1} - <strong>${persona.nombre}</strong>: ${persona.puntos} pts`;
+            ranking.appendChild(li);
+        });
+
+        // Progreso grupal simulado
+        const puntosEquipo = 3000;
+        const metaGrupo = 6000;
+
+        document.getElementById('puntos-grupo').textContent = puntosEquipo;
+        document.getElementById('meta-grupo').textContent = metaGrupo;
+
+        const porcentajeGrupo = Math.min((puntosEquipo / metaGrupo) * 100, 100);
+        document.getElementById('barra-grupo').style.width = porcentajeGrupo + "%";
+        document.getElementById('porcentaje-grupo').textContent = `${Math.round(porcentajeGrupo)}%`;
+
+        // Confeti si se alcanza meta grupal
+        if (puntosEquipo >= metaGrupo) {
+            setTimeout(lanzarConfeti, 500);
+        }
+    </script>
+</body>
+
+</html>

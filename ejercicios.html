@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios del Mes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Manrope:wght@400;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <a href="./inicio (1).html" class="btn-salida" title="Volver a inicio">✖</a>
+  <h1 class="text-center mb-5">Ejercicios de Bienestar</h1>
+  <div id="contenedor-ejercicios"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const ejerciciosDisponibles = [
+        { nombre: "💆‍♀️ Estiramiento de brazos hacia arriba (10s)", imagen: "https://co.pinterest.com/pin/473018767132835715/" },
+        { nombre: "🧘‍♀️ Respiración consciente (3 ciclos)", imagen: "https://sdmntprwestus2.oaiusercontent.com/files/00000000-b4f0-61f8-b90f-19b8976a1e5f/raw?se=2025-07-10T14%3A20%3A39Z&sp=r&sv=2024-08-04&sr=b&scid=f72d4074-b212-5ac9-a486-8d910c2e6a64&skoid=5c72dd08-68ae-4091-b4e1-40ccec0693ae&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-09T19%3A50%3A00Z&ske=2025-07-10T19%3A50%3A00Z&sks=b&skv=2024-08-04&sig=MlMwPcvJNSu3gUxnJfpfuaSHeQ1MQI1WnjpUC7tB0lQ%3D" },
+        { nombre: "🪶‍♂️ Caminar alrededor del lugar", imagen: "https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-e7f8-622f-bd64-37de7d66cf42/raw?se=2025-07-10T14%3A21%3A05Z&sp=r&sv=2024-08-04&sr=b&scid=25c5afaa-70a1-546b-a31f-5070e8b3acf0&skoid=5c72dd08-68ae-4091-b4e1-40ccec0693ae&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-09T19%3A50%3A03Z&ske=2025-07-10T19%3A50%3A03Z&sks=b&skv=2024-08-04&sig=klk4Q8QYHCwGfk/nWWIfzP4P2ca7FYGk%2B0JPPmRt3y4%3D" },
+        { nombre: "🤸‍♀️ Rotación de cuello lenta", imagen: "https://sdmntprukwest.oaiusercontent.com/files/00000000-fc00-6243-924b-6e307ddf49d2/raw?se=2025-07-10T14%3A21%3A34Z&sp=r&sv=2024-08-04&sr=b&scid=1a9adbe9-4cd5-5c97-8917-43c37a815d9d&skoid=5c72dd08-68ae-4091-b4e1-40ccec0693ae&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-10T11%3A54%3A34Z&ske=2025-07-11T11%3A54%3A34Z&sks=b&skv=2024-08-04&sig=0mCFDOsb7x0mgf1NcC3IphZKqq6IEg31zObCh%2BW4Sd4%3D" },
+        { nombre: "↔️ Estiramiento lateral", imagen: "https://cdn-icons-png.flaticon.com/512/2555/2555574.png" },
+        { nombre: "🌬️ Inhalación y exhalación guiada", imagen: "https://cdn-icons-png.flaticon.com/512/2936/2936886.png" },
+        { nombre: "✋ Estiramiento de muñecas", imagen: "https://cdn-icons-png.flaticon.com/512/3048/3048127.png" },
+        { nombre: "💪 Movimiento de hombros en círculos", imagen: "https://cdn-icons-png.flaticon.com/512/3048/3048058.png" },
+        { nombre: "😌 Cerrar ojos y respirar profundamente", imagen: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png" },
+        { nombre: "🦵 Elevar rodillas alternadas sentado", imagen: "https://cdn-icons-png.flaticon.com/512/2936/2936776.png" },
+        { nombre: "🧾 Sacudir piernas y brazos por 15s", imagen: "https://cdn-icons-png.flaticon.com/512/863/863810.png" },
+        { nombre: "😇 Estiramiento de espalda baja", imagen: "https://cdn-icons-png.flaticon.com/512/863/863836.png" },
+        { nombre: "👣 Paseo corto o marcha en el lugar", imagen: "https://cdn-icons-png.flaticon.com/512/3408/3408545.png" },
+        { nombre: "💆‍♀️ Masaje suave en cuello y hombros", imagen: "https://cdn-icons-png.flaticon.com/512/4052/4052846.png" },
+        { nombre: "💧 Beber un vaso de agua", imagen: "https://cdn-icons-png.flaticon.com/512/3045/3045886.png" },
+        { nombre: "🌤️ Mirar por la ventana durante 1 minuto", imagen: "https://cdn-icons-png.flaticon.com/512/1146/1146869.png" },
+        { nombre: "🦶 Hacer círculos con los tobillos", imagen: "https://cdn-icons-png.flaticon.com/512/3048/3048127.png" },
+        { nombre: "🐈 Estirarse como gato (espalda arqueada)", imagen: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
+        { nombre: "✍️ Dibujar o escribir algo por 2 minutos", imagen: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png" },
+        { nombre: "🎵🌳️ Escuchar sonidos de la naturaleza", imagen: "https://cdn-icons-png.flaticon.com/512/3659/3659898.png" }
+      ];
+
+      const contenedor = document.getElementById('contenedor-ejercicios');
+
+      // Crear los días con ejercicios
+      for (let dia = 1; dia <= 30; dia++) {
+        const copia = [...ejerciciosDisponibles];
+        const seleccionados = [];
+        for (let i = 0; i < 5; i++) {
+          const index = Math.floor(Math.random() * copia.length);
+          seleccionados.push(copia.splice(index, 1)[0]);
+        }
+
+        const seccion = document.createElement('section');
+        seccion.id = `dia${dia}`;
+        seccion.classList.add('dia');
+
+        // Título del día
+        const titulo = document.createElement('h3');
+        titulo.textContent = `Día ${dia}`;
+        seccion.appendChild(titulo);
+
+        // Crear tarjetas de ejercicios
+        seleccionados.forEach(ejercicio => {
+          const card = document.createElement('div');
+          card.className = 'card-ejercicio';
+          card.innerHTML = `
+            <p>${ejercicio.nombre}</p>
+            <img src="${ejercicio.imagen}" alt="${ejercicio.nombre}">
+            <div class="acciones">
+              <button class="btn btn-success btn-sm realizar-btn">Realizar</button>
+              <button class="btn btn-warning btn-sm posponer-btn">Posponer</button>
+            </div>
+            <span class="cronometro text-muted"></span>
+          `;
+          seccion.appendChild(card);
+        });
+
+        // Botón de recompensa
+        const botonRecompensa = document.createElement('button');
+        botonRecompensa.className = 'recibir-btn';
+        botonRecompensa.textContent = 'Recibir Recompensa';
+        seccion.appendChild(botonRecompensa);
+
+        contenedor.appendChild(seccion);
+      }
+
+      // Resaltar día activo si hay hash en la URL
+      window.addEventListener("load", () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const activo = document.querySelector(hash);
+          if (activo) activo.classList.add("activo");
+        }
+      });
+
+      // Manejar eventos
+      contenedor.addEventListener('click', (e) => {
+        // Botón Realizar
+        if (e.target.classList.contains('realizar-btn')) {
+          const card = e.target.closest('.card-ejercicio');
+          const span = card.querySelector('.cronometro');
+          let tiempo = 10;
+          span.textContent = `⏱️ ${tiempo}s`;
+          e.target.disabled = true;
+
+          const intervalo = setInterval(() => {
+            tiempo--;
+            span.textContent = `⏱️ ${tiempo}s`;
+            if (tiempo === 0) {
+              clearInterval(intervalo);
+              span.textContent = '✅ Completado';
+              card.style.boxShadow = '0 6px 12px rgba(46, 125, 50, 0.3)';
+            }
+          }, 1000);
+        }
+
+        // Botón Posponer
+        if (e.target.classList.contains('posponer-btn')) {
+          const card = e.target.closest('.card-ejercicio');
+          const ejercicio = {
+            nombre: card.querySelector('p').textContent,
+            imagen: card.querySelector('img').src
+          };
+          const actual = parseInt(card.closest('section').id.replace('dia', ''));
+          const siguiente = actual + 1;
+          const siguienteSeccion = document.querySelector(`#dia${siguiente}`);
+
+          if (siguienteSeccion) {
+            const nuevaCard = document.createElement('div');
+            nuevaCard.className = 'card-ejercicio';
+            nuevaCard.innerHTML = `
+              <p>${ejercicio.nombre}</p>
+              <img src="${ejercicio.imagen}" alt="${ejercicio.nombre}">
+              <div class="acciones">
+                <button class="btn btn-success btn-sm realizar-btn">Realizar</button>
+                <button class="btn btn-warning btn-sm posponer-btn">Posponer</button>
+              </div>
+              <span class="cronometro text-muted"></span>
+            `;
+            // Insertar antes del botón de recompensa
+            siguienteSeccion.insertBefore(nuevaCard, siguienteSeccion.lastChild);
+            card.remove();
+          } else {
+            Swal.fire({
+              title: '¡Ups!',
+              text: 'No hay un día siguiente para posponer este ejercicio 😅',
+              icon: 'warning',
+              confirmButtonText: 'Entendido'
+            });
+          }
+        }
+
+        // Botón Recibir Recompensa
+        if (e.target.classList.contains('recibir-btn')) {
+          const seccion = e.target.closest('section');
+          const cards = seccion.querySelectorAll('.card-ejercicio');
+          const completados = Array.from(cards).filter(card => {
+            return card.querySelector('.cronometro').textContent.includes('✅');
+          }).length;
+
+          // Validar que haya al menos un ejercicio completado
+          if (completados === 0) {
+            Swal.fire({
+              title: '¡Espera!',
+              text: 'Debes completar al menos un ejercicio para recibir tu recompensa',
+              icon: 'error',
+              confirmButtonText: 'Entendido'
+            });
+            return;
+          }
+
+          const total = cards.length;
+          const porcentaje = completados / total;
+          const puntos = Math.floor((porcentaje * 40) + 10); // mínimo 10, máximo 50
+          const tipo = Math.random() > 0.5 ? 'individuales' : 'grupales';
+
+          // Mostrar SweetAlert con la recompensa
+          Swal.fire({
+            title: '🎉 ¡Felicidades!',
+            html: `
+              <div style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                Has completado <strong>${completados} de ${total}</strong> ejercicios
+              </div>
+              <div style="font-size: 2rem; color: #5d6939; font-weight: bold; margin: 1.5rem 0;">
+                +${puntos} puntos ${tipo}
+              </div>
+              <div style="font-size: 4rem;">🏆</div>
+            `,
+            icon: 'success',
+            confirmButtonText: '¡Gracias!',
+            background: '#faf2e5',
+            customClass: {
+              popup: 'sweet-alert-popup',
+              title: 'sweet-alert-title'
+            },
+            showClass: {
+              popup: 'animate__animated animate__zoomIn'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__zoomOut'
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
+
+    body {
+      background: #e4e3e3;
+      background-size: cover;
+      backdrop-filter: blur(4px);
+      font-family: "MuseoModerno", sans-serif;
+      color: #3e4a25;
+      padding: 40px 20px;
+    }
+
+    .dia {
+      background: #faf2e5;
+      border-radius: 30px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+    }
+
+    .dia.activo {
+      border: 3px solid #5d6939;
+      box-shadow: 0 0 25px rgba(93, 105, 57, 0.4);
+    }
+
+    .dia h3 {
+      width: 100%;
+      text-align: center;
+      color: #5d6939;
+      font-family: "MuseoModerno", sans-serif;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    .card-ejercicio {
+      background: #fff;
+      width: 200px;
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card-ejercicio:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-ejercicio p {
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #5d6939;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-ejercicio img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .card-ejercicio .acciones {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .card-ejercicio .cronometro {
+      display: block;
+      margin-top: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #5d6939;
+      min-height: 20px;
+    }
+
+    .recibir-btn {
+      width: 100%;
+      background-color: #5d6939;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-top: 25px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .recibir-btn:hover {
+      background-color: #4a5530;
+      transform: scale(1.02);
+    }
+
+    /* Estilos para SweetAlert */
+    .swal2-popup {
+      border-radius: 20px !important;
+      background: #faf2e5 !important;
+    }
+
+    .swal2-title {
+      color: #5d6939 !important;
+      font-family: "MuseoModerno", sans-serif !important;
+    }
+
+    .swal2-confirm {
+      background-color: #5d6939 !important;
+    }
+
+    .btn-salida {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #5d6939;
+      border: 2px solid #5d6939;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 35px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-salida:hover {
+      background-color: #5d6939;
+      color: white;
+    }
+
+    a {
+      color: rgb(255 255 255);
+      text-decoration: none;
+    }
+  </style>
+</body>
+
+</html>
