@@ -139,6 +139,45 @@
       text-decoration: none;
     }
   </style>
+
+  <script>
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const emailInput = document.getElementById("email").value;
+    const passwordInput = document.getElementById("password").value;
+
+    const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+
+    if (!usuarioGuardado) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No hay usuarios registrados.',
+        confirmButtonColor: '#5d6939'
+      });
+      return;
+    }
+
+    if (usuarioGuardado.email === emailInput && usuarioGuardado.password === passwordInput) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido de nuevo',
+        text: 'Redirigiendo al inicio...',
+        confirmButtonColor: '#5d6939'
+      }).then(() => {
+        window.location.href = "inicio (1).html";
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Datos incorrectos',
+        text: 'Correo o contraseña inválidos.',
+        confirmButtonColor: '#5d6939'
+      });
+    }
+  });
+</script>
 </body>
 
 </html>
