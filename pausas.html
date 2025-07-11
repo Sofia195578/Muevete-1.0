@@ -132,6 +132,73 @@
       color: rgb(255 255 255);
       text-decoration: none;
     }
+
+/* RESPONSIVIDAD – CALENDARIO */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Espaciado del contenedor en pantallas pequeñas */
+@media (max-width: 768px) {
+  h1 {
+    text-align: center;
+    padding: 0 4rem;
+  }
+
+  p {
+    font-size: 16px;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .btn-dia {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .btn-salida {
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    line-height: 30px;
+    font-size: 20px;
+  }
+
+  button {
+    width: 90%;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .btn-dia {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+    margin-bottom: 20px;
+  }
+}
+
+
+
   </style>
 </body>
 
