@@ -51,6 +51,30 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
 
+@media (max-width: 768px) {
+  .contexto {
+    padding: 0 1rem;
+    font-size: 1rem;
+    text-align: justify;
+  }
+}
+
+@media (max-width: 480px) {
+  .contexto {
+    font-size: 0.95rem;
+    padding: 0 0.8rem;
+  }
+}
+
+/* Prevenir overflow lateral */
+body, html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
+
+    
     html,
     body {
       height: 100%;
@@ -155,4 +179,6 @@
   </style>
 </body>
 
+
+  
 </html>
